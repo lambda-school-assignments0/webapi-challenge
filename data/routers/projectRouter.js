@@ -13,6 +13,12 @@ router.get("/:id", validateId, (req, res) => {
     res.status(200).json(req.project);
 });
 
+router.get("/:id/action", validateId, (req, res) => {
+    Project.getProjectActions(req.projectId)
+        .then(actions => res.status(200).json(actions))
+        .catch(error => res.status(500).json(error));
+})
+
 router.post("/", validateProject, (req, res) => {
     Project.insert(req.projectInfo)
         .then(res.status(201).json(req.projectInfo))
