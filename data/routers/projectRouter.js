@@ -42,7 +42,7 @@ async function validateId(req, res, next) {
 
         const project = await Project.get(id);
 
-        if (action) {
+        if (project) {
             req.projectId = id;
             req.project = project;
             next();

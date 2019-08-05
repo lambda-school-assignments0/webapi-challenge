@@ -1,5 +1,6 @@
 const express = require("express");
 const Action = require("../helpers/actionModel");
+const Project = require("../helpers/projectModel");
 
 const router = express.Router();
 
@@ -63,8 +64,21 @@ async function validateAction(req, res, next) {
             actionInfo.description &&
             actionInfo.notes
         ) {
-            req.actionInfo = actionInfo;
-            next();
+
+            try {        
+                const project = await Project.get(actionInfo.project_id);
+        
+                if (project) {
+                    req.actionInfo = actionInfo;
+                    next();
+                } else {
+                    res.status(400).json({ error: "invalid project id" });
+                }
+            } catch (error) {
+                res.status(500).json(error);
+            }
+
+            
         } else {
             res.status(400).json({
                 error:
