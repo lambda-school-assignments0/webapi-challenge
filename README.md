@@ -25,14 +25,20 @@ In this challenge, create a web API around the following resources: `Projects` a
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] Mention two parts of Express that you learned about this week.
+1. Routing feature to build several endpoints to help organize our code
+2. Dynamic PORT for our Express server in order to host our server with a service like Heroku
 
 - [ ] Describe Middleware?
+Middleware is a collection of functions that get executed in a particular order to help manage the server
 
 - [ ] Describe a Resource?
+Resource is a data point that we can access through the API that we built
 
 - [ ] What can the API return to help clients know if a request was successful?
+API can return REST HTTP codes to tell clients what happened server-side. (200, 201, 204, 400, 404, 500, etc.)
 
 - [ ] How can we partition our application into sub-applications?
+Through using Middleware and Routing.
 
 ## Project Setup
 
